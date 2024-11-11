@@ -1,6 +1,6 @@
 # 🌐 **Project Management System**
 
-Welcome to the **Project Management System** for **HUTECH (Ho Chi Minh City University of Technology)**! This platform is specifically designed to support Master's level Database Systems courses, providing students and educators with an effective tool for managing and exploring complex database projects.
+Welcome to the **Project Management System** for **HUTECH (Ho Chi Minh City University of Technology)**! This platform is specifically designed to support Master's level Database Systems projects, providing students and educators with an effective tool for managing and exploring complex database projects.
 
 ---
 
@@ -34,7 +34,7 @@ Our mission is to create a **functional, scalable, and user-friendly** platform 
 - **🔒 User Authentication**: Secure login for students and faculty.
 - **📚 Course Management**: Access and organize course materials and assignments.
 - **💻 Database Exercises**: Interactive labs for hands-on database experience.
-- **🛠️ Admin Interface**: Control panel for managing users, courses, and settings.
+- **🛠️ Admin Interface**: Control panel for managing users, projects, and settings.
 - **📊 Data Visualization**: Visual tools for understanding queries and data.
 
 ---
@@ -142,7 +142,7 @@ dotnet run
 
 1. **Launch the App**: Open your browser and navigate to `http://localhost:5000`.
 2. **Student & Professor Access**: Log in to access course features.
-3. **Admin Dashboard**: Log in with an admin account to manage users, courses, and system settings.
+3. **Admin Dashboard**: Log in with an admin account to manage users, projects, and system settings.
 4. **Database Labs**: Perform exercises and view real-time MongoDB queries.
 
 ---
