@@ -1,0 +1,154 @@
+﻿@using System.Collections.Generic;
+@using MDTasks.Constants
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="page-breadcrumb">
+    <div class="row align-items-center">
+        <div class="col-md-6 col-8 align-self-center">
+            <h3 class="page-title mb-0 p-0">Dashboard</h3>
+            <div class="d-flex align-items-center">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4 col-xlg-3 col-md-5">
+            <div class="card">
+                <div class="card-body profile-card">
+                    <center class="mt-4">
+                        <h4 class="card-title mt-2">@ViewBag.CountDepartment</h4>
+                        <h6 class="card-subtitle">Department</h6>
+                    </center>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-xlg-3 col-md-5">
+            <div class="card">
+                <div class="card-body profile-card">
+                    <center class="mt-4">
+                        <h4 class="card-title mt-2">@ViewBag.CountProject</h4>
+                        <h6 class="card-subtitle">Project</h6>
+                    </center>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-xlg-3 col-md-5">
+            <div class="card">
+                <div class="card-body profile-card">
+                    <center class="mt-4">
+                        <h4 class="card-title mt-2">@ViewBag.CountEmployee</h4>
+                        <h6 class="card-subtitle">Employee</h6>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        @*<div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="d-flex flex-wrap align-items-center">
+                                <div>
+                                    <h3 class="card-title">Sales Overview</h3>
+                                    <h6 class="card-subtitle">Ample Admin Vs Pixel Admin</h6>
+                                </div>
+                                <div class="ms-lg-auto mx-sm-auto mx-lg-0">
+                                    <ul class="list-inline d-flex">
+                                        <li class="me-4">
+                                            <h6 class="text-success">
+                                                <i class="fa fa-circle font-10 me-2 "></i>Ample
+                                            </h6>
+                                        </li>
+                                        <li>
+                                            <h6 class="text-info">
+                                                <i class="fa fa-circle font-10 me-2"></i>Pixel
+                                            </h6>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="amp-pxl" style="height: 360px;">
+                                <div class="chartist-tooltip"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Department</h3>
+                    <h6 class="card-subtitle">Employee in department</h6>
+                    <div id="chartDepartment"
+                         style="height: 290px; width: 100%; max-height: 290px; position: relative;"
+                         class="c3">
+                        <div class="c3-tooltip-container"
+                             style="position: absolute; pointer-events: none; display: none;">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <hr class="mt-0 mb-0">
+                </div>
+                <div class="card-body text-center ">
+                    <ul class="list-inline d-flex justify-content-center align-items-center mb-0">
+                        @{AppConstants appConstants = new AppConstants();}
+                        @foreach (var item in ViewBag.ListChartDepartment)
+                        {
+                            <li class="me-4">
+                                <h6 class="@appConstants.GetTextColor(ViewBag.ListChartDepartment.IndexOf(item)+1)"><i class="fa fa-circle font-10 me-2 "></i>@item.department.DepartmentName</h6>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(function() {
+        var chart = c3.generate({
+            bindto: '#chartDepartment',
+            data: {
+                columns: [
+                    @Html.Raw(ViewBag.StrListChartDepartment)
+                ],
+                type: 'donut',
+                onclick: function(d, i) { console.log("onclick", d, i); },
+                onmouseover: function(d, i) { console.log("onmouseover", d, i); },
+                onmouseout: function(d, i) { console.log("onmouseout", d, i); }
+            },
+            donut: {
+                label: {
+                    show: false
+                },
+                title: "Employee",
+                width: 20,
+
+            },
+            legend: {
+                hide: true
+            },
+            color: {
+                pattern: ['#eceff1', '#745af2', '#26c6da', '#1e88e5']
+            }
+        });
+    });
+</script>

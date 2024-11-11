@@ -1,0 +1,108 @@
+﻿@model MDTasks.Models.EmployeeViewModel
+@using System.Collections.Generic;
+
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="page-breadcrumb">
+    <div class="row align-items-center">
+        <div class="col-md-6 col-8 align-self-center">
+            <h3 class="page-title mb-0 p-0">Employee</h3>
+            <div class="d-flex align-items-center">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item" aria-current="page">Employee</li>
+                        <li class="breadcrumb-item active" aria-current="page">Detail</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post" asp-action="InsertOrUpdate" class="form-horizontal form-material mx-2">
+                        <input type="hidden" name="Id" value="@Model.Id" />
+                        @if(!string.IsNullOrEmpty(Model.EmployeeID)){
+                        <div class="form-group">
+                            <label class="col-md-12 mb-0">Employee ID</label>
+                            <div class="col-md-12">
+                                <input name="EmployeeID" type="text" value="@Model.EmployeeID" disabled
+                                       class="form-control ps-0 form-control-line">
+                            </div>
+                        </div>
+                        }
+                        <div class="form-group">
+                            <label class="col-md-12 mb-0">Employee Name</label>
+                            <div class="col-md-12">
+                                <input name="FullName" type="text" value="@Model.FullName"
+                                       class="form-control ps-0 form-control-line">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-12 mb-0">Department Name</label>
+                            <div class="col-sm-12 border-bottom">
+                                <select name="DepartmentID" class="form-select shadow-none ps-0 border-0 form-control-line">
+                                    @foreach (var department in ViewBag.Departments)
+                                    {
+                                        @if(department.Id == Model.DepartmentID)
+                                        {
+                                            <option value="@department.Id" selected>@department.DepartmentName</option>
+                                        }else{
+                                            <option value="@department.Id">@department.DepartmentName</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-6 mb-0">Birthday</label>
+                                <label class="col-md-6 mb-0">Email</label>
+                                <div class="col-md-6">
+                                    <input name="Birthday" type="date" value="@Model.Birthday"
+                                           class="form-control ps-0 form-control-line">
+                                </div>
+                                <div class="col-md-6">
+                                    <input name="Email" type="email" value="@Model.Email"
+                                           class="form-control ps-0 form-control-line">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-6 mb-0">Phone</label>
+                                <label class="col-md-6 mb-0">Position</label>
+                                <div class="col-md-6">
+                                    <input name="Phone" type="text" value="@Model.Phone"
+                                           class="form-control ps-0 form-control-line">
+                                </div>
+                                <div class="col-md-6">
+                                    <input name="Position" type="text" value="@Model.Position"
+                                           class="form-control ps-0 form-control-line">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12 d-flex">
+                                <button class="btn btn-success text-white" style="margin-right:10px">
+                                    Create
+                                </button>
+                                <a asp-action="Index" class="btn btn-danger text-white">
+                                    Cancel
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

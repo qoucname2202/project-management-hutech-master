@@ -1,0 +1,153 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords"
+        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, materialpro admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, materialpro admin lite design, materialpro admin lite dashboard bootstrap 5 dashboard template">
+    <meta name="description"
+        content="Material Pro Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="robots" content="noindex,nofollow">
+    <title>3H Task</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/materialpro-lite/" />
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/css/assets/images/favicon.png">
+    <!-- chartist CSS -->
+    <link href="~/css/assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
+    <link href="~/css/assets/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
+    <link href="~/css/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    <!--This page css - Morris CSS -->
+    <link href="~/css/assets/plugins/c3-master/c3.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="~/css/style.min.css" rel="stylesheet">
+    <script src="~/css/assets/plugins/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js" integrity="sha512-rMGGF4wg1R73ehtnxXBt5mbUfN9JUJwbk21KMlnLZDJh7BkPmeovBuddZCENJddHYYMkCh9hPFnPmS9sspki8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" integrity="sha512-yVvxUQV0QESBt1SyZbNJMAwyKvFTLMyXSyBHDO4BG5t7k/Lw34tyqlSDlKIrIENIzCl+RVUNjmCPG+V/GMesRw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+        <header class="topbar" data-navbarbg="skin6">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <div class="navbar-header" data-logobg="skin6">
+                    <a class="navbar-brand ms-4" >
+                        <!-- Logo icon -->
+                        <b class="logo-icon">
+                            <img src="~/css/assets/images/logo-light-icon.png" alt="homepage" class="dark-logo" />
+
+                        </b>
+                        <!--End Logo icon -->
+                        <!-- Logo text -->
+                        <span class="logo-text">
+                            <!-- dark Logo text -->
+                            <span class="text-white"><b> 3H </b></span><b> Task</b>
+                        </span>
+                    </a>
+                    <a class="nav-toggler waves-effect waves-light text-white d-block d-md-none"
+                        href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                </div>
+                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+                    <ul class="navbar-nav d-lg-none d-md-block ">
+                        <li class="nav-item">
+                            <a class="nav-toggler nav-link waves-effect waves-light text-white "
+                                href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav me-auto mt-md-0 ">
+                        <li class="nav-item search-box">
+                            <a class="nav-link text-muted" href="javascript:void(0)"><i class="ti-search"></i></a>
+                            <form class="app-search" style="display: none;">
+                                <input type="text" class="form-control" placeholder="Search &amp; enter"> <a
+                                    class="srh-btn"><i class="ti-close"></i></a> </form>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="left-sidebar" data-sidebarbg="skin6">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <!-- User Profile-->
+                        <li class="sidebar-item"> 
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                 asp-area="" asp-controller="Dashboard" asp-action="Index" aria-expanded="false">
+                                <i class="mdi me-2 mdi-gauge"></i>
+                                <span class="hide-menu">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                asp-area="" asp-controller="Employee" asp-action="Index" aria-expanded="false">
+                                <i class="mdi me-2 mdi-account-check"></i><span class="hide-menu">Employee</span></a>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                asp-area="" asp-controller="Department" asp-action="Index" aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span
+                                    class="hide-menu">Department</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                asp-area="" asp-controller="Task" asp-action="Index" aria-expanded="false"><i
+                                    class="mdi me-2 mdi-emoticon"></i><span class="hide-menu">Task</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                 asp-area="" asp-controller="Project" asp-action="Index" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span
+                                    class="hide-menu">Project</span></a></li>
+                    </ul>
+
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+            <div class="sidebar-footer">
+                <div class="row">
+                    <div class="col-12 link-wrap">
+                        <!-- item-->
+                        3H Task
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <div class="page-wrapper">
+            @RenderBody()
+           
+            <footer class="footer"> © 2022 <b>3H Task</b> by <a href="https://fb.com/trangiahuysn1998">Trần Gia Huy </a>
+            </footer>
+        </div>
+    </div>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="~/css/assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/app-style-switcher.js"></script>
+    <!--Wave Effects -->
+    <script src="~/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="~/js/sidebarmenu.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!-- chartist chart -->
+    <script src="~/css/assets/plugins/chartist-js/dist/chartist.min.js"></script>
+    <script src="~/css/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+    <!--c3 JavaScript -->
+    <script src="~/css/assets/plugins/d3/d3.min.js"></script>
+    <script src="~/css/assets/plugins/c3-master/c3.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="~/js/pages/dashboards/dashboard1.js"></script>
+    <script src="~/js/custom.js"></script>
+</body>
+
+</html> 
