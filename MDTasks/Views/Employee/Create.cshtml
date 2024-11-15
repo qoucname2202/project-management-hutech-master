@@ -2,102 +2,122 @@
 @using System.Collections.Generic;
 
 @{
-    ViewData["Title"] = "Detail";
+    ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<div class="page-breadcrumb">
-    <div class="row align-items-center">
-        <div class="col-md-6 col-8 align-self-center">
-            <h3 class="page-title mb-0 p-0">Employee</h3>
-            <div class="d-flex align-items-center">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item" aria-current="page">Employee</li>
-                        <li class="breadcrumb-item active" aria-current="page">Detail</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid">
+<div class="container-xxl flex-grow-1 container-p-y">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-style1">
+            <li class="breadcrumb-item d-flex justify-content-center">
+                <i class="bx bx-home"></i>
+                <a asp-action="Index" asp-controller="Dashboard">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a asp-action="Index" asp-controller="Employee">User</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a asp-action="Create" asp-controller="Employee">Create</a>
+            </li>
+        </ol>
+    </nav>
     <div class="row">
-        <div class="col-sm-12">
-            <div class="card">
+        <div class="col-xl">
+            <div class="card mb-4">
                 <div class="card-body">
-                    <form method="post" asp-action="InsertOrUpdate" class="form-horizontal form-material mx-2">
-                        <input type="hidden" name="Id" value="@Model.Id" />
-                        @if(!string.IsNullOrEmpty(Model.EmployeeID)){
-                        <div class="form-group">
-                            <label class="col-md-12 mb-0">Employee ID</label>
-                            <div class="col-md-12">
-                                <input name="EmployeeID" type="text" value="@Model.EmployeeID" disabled
-                                       class="form-control ps-0 form-control-line">
+                    <form class="" method="" asp-action="">
+                        <div class="row">
+                            <div class="col-3">
                             </div>
-                        </div>
-                        }
-                        <div class="form-group">
-                            <label class="col-md-12 mb-0">Employee Name</label>
-                            <div class="col-md-12">
-                                <input name="FullName" type="text" value="@Model.FullName"
-                                       class="form-control ps-0 form-control-line">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-12 mb-0">Department Name</label>
-                            <div class="col-sm-12 border-bottom">
-                                <select name="DepartmentID" class="form-select shadow-none ps-0 border-0 form-control-line">
-                                    @foreach (var department in ViewBag.Departments)
-                                    {
-                                        @if(department.Id == Model.DepartmentID)
-                                        {
-                                            <option value="@department.Id" selected>@department.DepartmentName</option>
-                                        }else{
-                                            <option value="@department.Id">@department.DepartmentName</option>
-                                        }
-                                    }
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <label class="col-md-6 mb-0">Birthday</label>
-                                <label class="col-md-6 mb-0">Email</label>
-                                <div class="col-md-6">
-                                    <input name="Birthday" type="date" value="@Model.Birthday"
-                                           class="form-control ps-0 form-control-line">
+                            <div class="col-6">
+                                <div class="row mb-4 mt-3 form-group">
+                                    <label class="col-sm-2 col-form-label" for="basic-icon-default-fullName">Fullname:</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-merge">
+                                            <span id="basic-icon-default-fullName" class="input-group-text">
+                                                <i class="bx bx-user"></i>
+                                            </span>
+                                            <input type="text"
+                                                   id="fullName"
+                                                   class="form-control"
+                                                   placeholder="fullname"
+                                                   aria-label="fullname"
+                                                   aria-describedby="basic-addon11" />
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <input name="Email" type="email" value="@Model.Email"
-                                           class="form-control ps-0 form-control-line">
+                                <div class="row mb-4 form-group">
+                                    <label class="col-sm-2 col-form-label" for="basic-icon-default-email">Email:</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-merge">
+                                            <span id="basic-icon-default-email" class="input-group-text">
+                                                <i class="bx bx-envelope"></i>
+                                            </span>
+                                            <input type="text"
+                                                   id="email"
+                                                   class="form-control"
+                                                   placeholder="user@example.com"
+                                                   aria-label="user@example.com"
+                                                   aria-describedby="basic-addon11" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 form-group">
+                                    <label class="col-sm-2 col-form-label" for="basic-icon-default-position">Position:</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-merge">
+                                            <select id="position" class="form-select">
+                                                <option>Default select</option>
+                                                <option value="1">President</option>
+                                                <option value="2">Personnel manager</option>
+                                                <option value="3">Accounting manager</option>
+                                                <option value="3">Trainee</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 form-group">
+                                    <label class="col-sm-2 col-form-label" for="basic-icon-default-birthday">Birthday:</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-merge">
+                                            <span id="basic-icon-default-birthday" class="input-group-text">
+                                                <i class="bx bx-calendar"></i>
+                                            </span>
+                                            <input class="form-control" type="date" value="2021-06-18" id="birthday" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 form-group">
+                                    <label class="col-sm-2 col-form-label" for="basic-icon-default-phone">Phone:</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-merge">
+                                            <span id="basic-icon-default-phone" class="input-group-text">
+                                                <i class="bx bx-phone"></i>
+                                            </span>
+                                            <input class="form-control" type="tel" placeholder="90-(164)-188-556" id="phone" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 form-group">
+                                    <label class="col-sm-2 col-form-label" for="basic-icon-default-department">Deparment:</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-merge">
+                                            <select id="department" class="form-select">
+                                                <option>Default select</option>
+                                                <option value="1">Chi Nhánh 1</option>
+                                                <option value="2">Chi Nhánh 2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-2"></div>
+                                    <div class="col-10">
+                                        <button type="submit" id="btnCreate" class="btn btn-primary">Create</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <label class="col-md-6 mb-0">Phone</label>
-                                <label class="col-md-6 mb-0">Position</label>
-                                <div class="col-md-6">
-                                    <input name="Phone" type="text" value="@Model.Phone"
-                                           class="form-control ps-0 form-control-line">
-                                </div>
-                                <div class="col-md-6">
-                                    <input name="Position" type="text" value="@Model.Position"
-                                           class="form-control ps-0 form-control-line">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-12 d-flex">
-                                <button class="btn btn-success text-white" style="margin-right:10px">
-                                    Create
-                                </button>
-                                <a asp-action="Index" class="btn btn-danger text-white">
-                                    Cancel
-                                </a>
+                            <div class="col-3">
                             </div>
                         </div>
                     </form>

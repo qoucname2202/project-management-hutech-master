@@ -1,0 +1,196 @@
+﻿@model MDTasks.Models.EmployeeViewModel
+@using System.Collections.Generic;
+
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-style1">
+            <li class="breadcrumb-item d-flex justify-content-center">
+                <i class="bx bx-home"></i>
+                <a asp-action="Index" asp-controller="Dashboard">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a asp-action="Index" asp-controller="Employee">User</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a asp-action="Index" asp-controller="Employee">Detail</a>
+            </li>
+        </ol>
+    </nav>
+    <div class="row">
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <form class="" method="" asp-action="">
+                        <div class="row">
+                            <div class="col-1">
+                            </div>
+                            <div class="col-10">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="row mb-4 form-group">
+                                            <label class="col-sm-2 col-form-label" for="basic-icon-default-employeeId" style="font-size: 13px">ID:</label>
+                                            <div class="col-sm-10">
+                                                <div class="input-group input-group-merge">
+                                                    <span id="basic-icon-default-employeeId" class="input-group-text" style="background-color: #eceef1;">
+                                                        <i class="bx bx-key"></i>
+                                                    </span>
+                                                    <input type="text"
+                                                           disabled
+                                                           id="employeeId"
+                                                           class="form-control"
+                                                           value="6731b83dff66f6ffc5b61e14"
+                                                           placeholder="6731b83dff66f6ffc5b61e14"
+                                                           aria-label="6731b83dff66f6ffc5b61e14"
+                                                           aria-describedby="basic-addon11" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="row mb-4 form-group">
+                                            <label class="col-sm-2 col-form-label" for="basic-icon-default-company" style="font-size: 11px">Fullname:</label>
+                                            <div class="col-sm-10">
+                                                <div class="input-group input-group-merge">
+                                                    <span id="basic-icon-default-username" class="input-group-text">
+                                                        <i class="bx bx-user"></i>
+                                                    </span>
+                                                    <input type="text"
+                                                           id="username"
+                                                           class="form-control"
+                                                           value="Nguyen Trung Tuyen"
+                                                           aria-label="username"
+                                                           aria-describedby="basic-addon11" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="row mb-4 form-group">
+                                            <label class="col-sm-2 col-form-label" for="basic-icon-default-email" style="font-size: 11px">Email:</label>
+                                            <div class="col-sm-10">
+                                                <div class="input-group input-group-merge">
+                                                    <span id="basic-icon-default-email" class="input-group-text">
+                                                        <i class="bx bx-envelope"></i>
+                                                    </span>
+                                                    <input type="text"
+                                                           id="email"
+                                                           class="form-control"
+                                                           value="nttuyen12@gmail.com"
+                                                           aria-label="user@example.com"
+                                                           aria-describedby="basic-addon11" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="row mb-4 form-group">
+                                            <label class="col-sm-2 col-form-label" for="basic-icon-default-position" style="font-size: 11px">Position:</label>
+                                            <div class="col-sm-10">
+                                                <div class="input-group input-group-merge">
+                                                    <select id="position" class="form-select">
+                                                        <option>Default select</option>
+                                                        <option value="1">President</option>
+                                                        <option value="2">Personnel manager</option>
+                                                        <option value="3">Accounting manager</option>
+                                                        <option value="3">Trainee</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="row mb-4 form-group">
+                                            <label class="col-sm-2 col-form-label" for="basic-icon-default-birthday" style="font-size: 11px">Birthday:</label>
+                                            <div class="col-sm-10">
+                                                <div class="input-group input-group-merge">
+                                                    <span id="basic-icon-default-birthday" class="input-group-text">
+                                                        <i class="bx bx-calendar"></i>
+                                                    </span>
+                                                    <input class="form-control" type="date" value="2021-06-18" id="birthday" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="row mb-4 form-group">
+                                            <label class="col-sm-2 col-form-label" for="basic-icon-default-phone">Phone:</label>
+                                            <div class="col-sm-10">
+                                                <div class="input-group input-group-merge">
+                                                    <span id="basic-icon-default-phone" class="input-group-text">
+                                                        <i class="bx bx-phone"></i>
+                                                    </span>
+                                                    <input class="form-control" type="tel" value="0779382123" id="phone" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="row mb-4 form-group">
+                                            <label class="col-sm-2 col-form-label" for="basic-icon-default-birthday" style="font-size: 11px">Created:</label>
+                                            <div class="col-sm-10">
+                                                <div class="input-group input-group-merge">
+                                                    <span id="basic-icon-default-created" class="input-group-text">
+                                                        <i class="bx bx-calendar"></i>
+                                                    </span>
+                                                    <input class="form-control" type="date" value="2021-06-18" id="createdAt" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="row mb-4 form-group">
+                                            <label class="col-sm-2 col-form-label" for="basic-icon-default-birthday" style="font-size: 11px">Updated:</label>
+                                            <div class="col-sm-10">
+                                                <div class="input-group input-group-merge">
+                                                    <span id="basic-icon-default-updated" class="input-group-text">
+                                                        <i class="bx bx-calendar"></i>
+                                                    </span>
+                                                    <input class="form-control" type="date" value="2021-06-18" id="updatedAt" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="row mb-4 form-group">
+                                            <label class="col-sm-1 col-form-label" for="basic-icon-default-department" style="font-size: 11px">Deparment</label>
+                                            <div class="col-sm-11">
+                                                <div class="input-group input-group-merge">
+                                                    <select id="department" class="form-select">
+                                                        <option>Default select</option>
+                                                        <option value="1">Chi Nhánh 1</option>
+                                                        <option value="2">Chi Nhánh 2</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-1"></div>
+                                    <div class="col-11">
+                                        <button type="submit" id="btnBackHome" onclick="location.href='@Url.Action("Index", "Employee")'" class="btn btn-primary">Back Home</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-1">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

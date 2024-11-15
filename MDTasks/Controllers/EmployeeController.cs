@@ -31,12 +31,30 @@ namespace MDTasks.Controllers
         public IActionResult Index()
         {
             List<EmployeeViewModel> Employees = _mapper.Map<List<Employee>, List<EmployeeViewModel>>(_employeeServices.Get());
-            Employees.Select(x => {
+            Employees.Select(x =>
+            {
                 x.DepartmentName = !string.IsNullOrEmpty(x.DepartmentID) ? _departmentServices.Get(x.DepartmentID)?.DepartmentName : "";
                 return x;
             }).ToList();
 
             return View(Employees);
+        }
+
+        public IActionResult Detail(string id)
+        {
+            try
+            {
+                //var user = _employeeServices.Get(id);
+                //if (user == null)
+                //{
+                //    return NotFound();
+                //}
+                return View();
+            }
+            catch
+            {
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         public IActionResult Edit(string id)

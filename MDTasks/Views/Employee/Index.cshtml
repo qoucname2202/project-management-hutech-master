@@ -5,77 +5,246 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-<style>
-    a: hover{
-        cursor: pointer;
-    }
-</style>
-<div class="page-breadcrumb">
-    <div class="row align-items-center">
-        <div class="col-md-6 col-8 align-self-center">
-            <h3 class="page-title mb-0 p-0">Employee</h3>
-            <div class="d-flex align-items-center">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Employee</li>
-                    </ol>
-                </nav>
+<div class="container-xxl flex-grow-1 container-p-y">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-style1">
+            <li class="breadcrumb-item">
+                <a href="javascript:void(0);">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="javascript:void(0);">User</a>
+            </li>
+        </ol>
+    </nav>
+    <div class="card">
+        <div class="d-flex justify-content-between align-items-center">
+            <h5 class="card-header">Table Caption</h5>
+            <button type="button" onclick="location.href='@Url.Action("Create", "Employee")'" class="btn rounded-pill btn-secondary" style="margin-right: 20px">
+                <span class="tf-icons bx bx-user-plus"></span>&nbsp; Add User
+            </button>
+        </div>
+        <div class="table-responsive text-nowrap">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Date Created</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                    <tr>
+                        <td><strong>1</strong></td>
+                        <td>
+                            <a href="#">
+                                <img src="~/assets/img/avatars/6.png" alt="Avatar" class="w-px-40 h-auto rounded-circle" />
+                                <span class="ps-2" style="color: #697a8d;">Trần Quyên Vũ</span>
+                            </a>
+                        </td>
+                        <td>11/05/2015</td>
+                        <td>Publisher</td>
+                        <td><span class="badge bg-label-primary me-1">Active</span></td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    @* <a class="dropdown-item" asp-action="Create" asp-controller="Employee"><i class="bx bx-show me-1"></i>View</a> *@
+                                    <a class="dropdown-item" href="https://localhost:44386/Employee/Detail/6731b83dff66f6ffc5b61e14"><i class="bx bx-show me-1"></i>View</a>
+                                    @* <a class="dropdown-item" asp-action="Edit" asp-route-id="" asp-controller="Employee"><i class="bx bx-edit-alt me-1"></i> Edit</a> *@
+                                    <a class="dropdown-item" href="https://localhost:44386/Employee/Edit/6731b83dff66f6ffc5b61e14"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                    <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal"
+                                       data-bs-target="#modalToggle"><i class="bx bx-trash me-1"></i> Delete</a>
+                                </div>
+                                <div class="modal fade"
+                                     id="modalToggle"
+                                     aria-labelledby="modalToggleLabel"
+                                     tabindex="-1"
+                                     style="display: none"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="modalToggleLabel">Error Message</h5>
+                                                <button type="button"
+                                                        class="btn-close"
+                                                        data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="bx bx-error-circle text-danger" style="font-size: 50px"></i>
+                                                    <span class="ms-2">Do you want to delete this user?</span>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <button class="btn btn-danger">
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>1</strong></td>
+                        <td>
+                            <a href="#">
+                                <img src="~/assets/img/avatars/6.png" alt="Avatar" class="w-px-40 h-auto rounded-circle" />
+                                <span class="ps-2" style="color: #697a8d;">Trần Quyên Vũ</span>
+                            </a>
+                        </td>
+                        <td>11/05/2015</td>
+                        <td>Publisher</td>
+                        <td><span class="badge bg-label-primary me-1">Active</span></td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    @* <a class="dropdown-item" asp-action="Create" asp-controller="Employee"><i class="bx bx-show me-1"></i>View</a> *@
+                                    <a class="dropdown-item" href="https://localhost:44386/Employee/Detail/6731b83dff66f6ffc5b61e14"><i class="bx bx-show me-1"></i>View</a>
+                                    @* <a class="dropdown-item" asp-action="Edit" asp-route-id="" asp-controller="Employee"><i class="bx bx-edit-alt me-1"></i> Edit</a> *@
+                                    <a class="dropdown-item" href="https://localhost:44386/Employee/Edit/6731b83dff66f6ffc5b61e14"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                    <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal"
+                                       data-bs-target="#modalToggle"><i class="bx bx-trash me-1"></i> Delete</a>
+                                </div>
+                                <div class="modal fade"
+                                     id="modalToggle"
+                                     aria-labelledby="modalToggleLabel"
+                                     tabindex="-1"
+                                     style="display: none"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="modalToggleLabel">Error Message</h5>
+                                                <button type="button"
+                                                        class="btn-close"
+                                                        data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="bx bx-error-circle text-danger" style="font-size: 50px"></i>
+                                                    <span class="ms-2">Do you want to delete this user?</span>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <button class="btn btn-danger">
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>1</strong></td>
+                        <td>
+                            <a href="#">
+                                <img src="~/assets/img/avatars/6.png" alt="Avatar" class="w-px-40 h-auto rounded-circle" />
+                                <span class="ps-2" style="color: #697a8d;">Trần Quyên Vũ</span>
+                            </a>
+                        </td>
+                        <td>11/05/2015</td>
+                        <td>Publisher</td>
+                        <td><span class="badge bg-label-primary me-1">Active</span></td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    @* <a class="dropdown-item" asp-action="Create" asp-controller="Employee"><i class="bx bx-show me-1"></i>View</a> *@
+                                    <a class="dropdown-item" href="https://localhost:44386/Employee/Detail/6731b83dff66f6ffc5b61e14"><i class="bx bx-show me-1"></i>View</a>
+                                    @* <a class="dropdown-item" asp-action="Edit" asp-route-id="" asp-controller="Employee"><i class="bx bx-edit-alt me-1"></i> Edit</a> *@
+                                    <a class="dropdown-item" href="https://localhost:44386/Employee/Edit/6731b83dff66f6ffc5b61e14"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                    <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal"
+                                       data-bs-target="#modalToggle"><i class="bx bx-trash me-1"></i> Delete</a>
+                                </div>
+                                <div class="modal fade"
+                                     id="modalToggle"
+                                     aria-labelledby="modalToggleLabel"
+                                     tabindex="-1"
+                                     style="display: none"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="modalToggleLabel">Error Message</h5>
+                                                <button type="button"
+                                                        class="btn-close"
+                                                        data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="bx bx-error-circle text-danger" style="font-size: 50px"></i>
+                                                    <span class="ms-2">Do you want to delete this user?</span>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <button class="btn btn-danger">
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-between align-items-center p-3">
+                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                <ul class="pagination justify-content-end" style="margin-right: 20px; margin-bottom: 0px">
+                    <li class="page-item prev">
+                        <a class="page-link" href="javascript:void(0);">
+                            <i class="tf-icon bx bx-chevrons-left"></i>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="javascript:void(0);">1</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="javascript:void(0);">2</a>
+                    </li>
+                    <li class="page-item active">
+                        <a class="page-link" href="javascript:void(0);">3</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="javascript:void(0);">4</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="javascript:void(0);">5</a>
+                    </li>
+                    <li class="page-item next">
+                        <a class="page-link" href="javascript:void(0);">
+                            <i class="tf-icon bx bx-chevrons-right"></i>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
 </div>
-
-<div class="container-fluid">
-    <!-- ============================================================== -->
-    <!-- Start Page Content -->
-    <!-- ============================================================== -->
-    <div class="row">
-        <!-- column -->
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Employee</h4>
-                    <a class="h6 btn btn-success text-white" asp-action="Create"><i class="mdi mdi-plus"></i>Add</a>
-                    <div class="table-responsive">
-                        <table id="tableEmployee" class="table user-table">
-                            <thead>
-                                <tr>
-                                    <th class="border-top-0">#</th>
-                                    <th class="border-top-0">Full Name</th>
-                                    <th class="border-top-0">Department Name</th>
-                                    <th class="border-top-0">Position</th>
-                                    <th class="border-top-0"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model){
-                                    <tr>
-                                        <td>@(Model.IndexOf(item)+1)</td>
-                                        <td>@item.FullName</td>
-                                        <td>@item.DepartmentName</td>
-                                        <td>@item.Position</td>
-                                        <td>
-                                            <a title="Edit" asp-action="Edit" asp-route-id="@item.Id"><i class="mdi mdi-tooltip-edit text-success h3"></i></a>
-                                            <a title="Remove" href="#" onclick="return RemoveEmployee('@item.Id')"><i class="mdi mdi-delete-circle text-danger h3"></i></a>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<script type="text/javascript">
-     $(document).ready(function() {
-        $('#tableEmployee').DataTable();
-    });
-    function RemoveEmployee (id) {
-        if (confirm("Are you sure you want to delete this item?") == true) {
-            window.location.href = '/Employee/Delete/' + id;
-        } 
-    }
-</script>
