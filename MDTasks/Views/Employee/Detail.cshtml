@@ -25,16 +25,87 @@
         <div class="col-xl">
             <div class="card mb-4">
                 <div class="card-body">
+                    <div class="row mb-4">
+                        <div class="col-9">
+                        </div>
+                        <div class="col-3 text-end">
+                            <button type="button" class="btn rounded-pill btn-secondary" data-bs-toggle="modal"
+                                    data-bs-target="#modalCenter">
+                                <span class="tf-icons bx bx-laptop"></span>&nbsp Borrow Devices
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalCenterTitle">Borrow Devices</h5>
+                                    <button type="button"
+                                            class="btn-close"
+                                            data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col mb-3">
+                                            <label for="nameWithTitle" class="form-label">Employee ID</label>
+                                            <input type="text"
+                                                   id="nameWithTitle"
+                                                   value="6731b83dff66f6ffc5b61e14"
+                                                   class="form-control" disabled />
+                                        </div>
+                                    </div>
+                                    <div class="row g-2">
+                                        <div class="col mb-0">
+                                            <label for="emailWithTitle" class="form-label">Devices</label>
+                                            <input type="text"
+                                                   id="emailWithTitle"
+                                                   class="form-control"
+                                                   placeholder="xxxx@xxx.xx" />
+                                        </div>
+                                        <div class="col mb-0">
+                                            <label for="dobWithTitle" class="form-label">Borrow Date</label>
+                                            <input type="text"
+                                                   id="dobWithTitle"
+                                                   class="form-control"
+                                                   placeholder="DD / MM / YY" />
+                                        </div>
+                                    </div>
+                                    <div class="row g-2 mt-2">
+                                        <div class="col mb-0">
+                                            <label for="emailWithTitle" class="form-label">Devices</label>
+                                            <input type="text"
+                                                   id="emailWithTitle"
+                                                   class="form-control"
+                                                   placeholder="xxxx@xxx.xx" />
+                                        </div>
+                                        <div class="col mb-0">
+                                            <label for="dobWithTitle" class="form-label">Borrow Date</label>
+                                            <input type="text"
+                                                   id="dobWithTitle"
+                                                   class="form-control"
+                                                   placeholder="DD / MM / YY" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                        Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <form class="" method="" asp-action="">
                         <div class="row">
                             <div class="col-1">
                             </div>
                             <div class="col-10">
-                                <div class="row">
+                                <div class="row mb-3">
                                     <div class="col-6">
                                         <div class="row mb-4 form-group">
-                                            <label class="col-sm-2 col-form-label" for="basic-icon-default-employeeId" style="font-size: 13px">ID:</label>
-                                            <div class="col-sm-10">
+                                            <label class="col-sm-3 col-form-label text-end" for="basic-icon-default-employeeId">ID:</label>
+                                            <div class="col-sm-9">
                                                 <div class="input-group input-group-merge">
                                                     <span id="basic-icon-default-employeeId" class="input-group-text" style="background-color: #eceef1;">
                                                         <i class="bx bx-key"></i>
@@ -53,8 +124,8 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="row mb-4 form-group">
-                                            <label class="col-sm-2 col-form-label" for="basic-icon-default-company" style="font-size: 11px">Fullname:</label>
-                                            <div class="col-sm-10">
+                                            <label class="col-sm-3 col-form-label text-end" for="basic-icon-default-company">Fullname:</label>
+                                            <div class="col-sm-9">
                                                 <div class="input-group input-group-merge">
                                                     <span id="basic-icon-default-username" class="input-group-text">
                                                         <i class="bx bx-user"></i>
@@ -70,11 +141,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row mb-3">
                                     <div class="col-6">
                                         <div class="row mb-4 form-group">
-                                            <label class="col-sm-2 col-form-label" for="basic-icon-default-email" style="font-size: 11px">Email:</label>
-                                            <div class="col-sm-10">
+                                            <label class="col-sm-3 col-form-label text-end" for="basic-icon-default-email">Email:</label>
+                                            <div class="col-sm-9">
                                                 <div class="input-group input-group-merge">
                                                     <span id="basic-icon-default-email" class="input-group-text">
                                                         <i class="bx bx-envelope"></i>
@@ -91,8 +162,8 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="row mb-4 form-group">
-                                            <label class="col-sm-2 col-form-label" for="basic-icon-default-position" style="font-size: 11px">Position:</label>
-                                            <div class="col-sm-10">
+                                            <label class="col-sm-3 col-form-label text-end" for="basic-icon-default-position">Position:</label>
+                                            <div class="col-sm-9">
                                                 <div class="input-group input-group-merge">
                                                     <select id="position" class="form-select">
                                                         <option>Default select</option>
@@ -106,11 +177,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row mb-3">
                                     <div class="col-6">
                                         <div class="row mb-4 form-group">
-                                            <label class="col-sm-2 col-form-label" for="basic-icon-default-birthday" style="font-size: 11px">Birthday:</label>
-                                            <div class="col-sm-10">
+                                            <label class="col-sm-3 col-form-label text-end" for="basic-icon-default-birthday">Birthday:</label>
+                                            <div class="col-sm-9">
                                                 <div class="input-group input-group-merge">
                                                     <span id="basic-icon-default-birthday" class="input-group-text">
                                                         <i class="bx bx-calendar"></i>
@@ -122,8 +193,8 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="row mb-4 form-group">
-                                            <label class="col-sm-2 col-form-label" for="basic-icon-default-phone">Phone:</label>
-                                            <div class="col-sm-10">
+                                            <label class="col-sm-3 col-form-label text-end" for="basic-icon-default-phone">Phone:</label>
+                                            <div class="col-sm-9">
                                                 <div class="input-group input-group-merge">
                                                     <span id="basic-icon-default-phone" class="input-group-text">
                                                         <i class="bx bx-phone"></i>
@@ -134,39 +205,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row mb-3">
                                     <div class="col-6">
                                         <div class="row mb-4 form-group">
-                                            <label class="col-sm-2 col-form-label" for="basic-icon-default-birthday" style="font-size: 11px">Created:</label>
-                                            <div class="col-sm-10">
-                                                <div class="input-group input-group-merge">
-                                                    <span id="basic-icon-default-created" class="input-group-text">
-                                                        <i class="bx bx-calendar"></i>
-                                                    </span>
-                                                    <input class="form-control" type="date" value="2021-06-18" id="createdAt" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="row mb-4 form-group">
-                                            <label class="col-sm-2 col-form-label" for="basic-icon-default-birthday" style="font-size: 11px">Updated:</label>
-                                            <div class="col-sm-10">
-                                                <div class="input-group input-group-merge">
-                                                    <span id="basic-icon-default-updated" class="input-group-text">
-                                                        <i class="bx bx-calendar"></i>
-                                                    </span>
-                                                    <input class="form-control" type="date" value="2021-06-18" id="updatedAt" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="row mb-4 form-group">
-                                            <label class="col-sm-1 col-form-label" for="basic-icon-default-department" style="font-size: 11px">Deparment</label>
-                                            <div class="col-sm-11">
+                                            <label class="col-sm-3 col-form-label text-end" for="basic-icon-default-birthday">Department:</label>
+                                            <div class="col-sm-9">
                                                 <div class="input-group input-group-merge">
                                                     <select id="department" class="form-select">
                                                         <option>Default select</option>
@@ -177,13 +220,21 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col-1"></div>
-                                    <div class="col-11">
-                                        <button type="submit" id="btnBackHome" onclick="location.href='@Url.Action("Index", "Employee")'" class="btn btn-primary">Back Home</button>
+                                    <div class="col-6">
+                                        <div class="row mb-4 form-group">
+                                            <label class="col-sm-3 col-form-label text-end" for="basic-icon-default-birthday">Created:</label>
+                                            <div class="col-sm-9">
+                                                <div class="input-group input-group-merge">
+                                                    <span id="basic-icon-default-created" class="input-group-text">
+                                                        <i class="bx bx-calendar"></i>
+                                                    </span>
+                                                    <input class="form-control" type="date" value="2021-06-18" id="createdAt" />
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                                <button type="submit" id="btnBackHome" onclick="location.href='@Url.Action("Index", "Employee")'" class="btn btn-primary">Back Home</button>
                             </div>
                             <div class="col-1">
                             </div>
