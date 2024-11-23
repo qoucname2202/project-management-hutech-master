@@ -26,10 +26,8 @@ namespace DeviceManagementSystem
         {
             services.AddScoped<EmployeeServices>();
             services.AddScoped<DepartmentServices>();
-            services.AddScoped<ProjectServices>();
             services.AddScoped<CommonServices>();
             services.AddScoped<DashboardServices>();
-            services.AddScoped<TaskServices>();
 
             services.AddAutoMapper(cfg =>
             {
