@@ -17,14 +17,14 @@ namespace DeviceManagementSystem.Services
         public EmployeeServices(IConfiguration config)
         {
             MongoClient client = new MongoClient(config.GetConnectionString("DbConnection"));
-            IMongoDatabase database = client.GetDatabase("db_taskmanagement");
+            IMongoDatabase database = client.GetDatabase("db_hutech");
             _employees = database.GetCollection<Employee>("employee");
         }
 
-        public List<Employee> Get()
-        {
-            return _employees.Find(em => true).ToList();
-        }
+        //public List<Employee> Get()
+        //{
+        //    return _employees.Find().ToList();
+        //}
 
         public Employee Get(string id)
         {
@@ -112,13 +112,13 @@ namespace DeviceManagementSystem.Services
         ////-------------------------------------
         ////SEARCH
 
-        
+
         //public List<Employee> SearchByEmpDepart(string EmpName, string DepName)
         //{
         //        var filter = Builders<Employee>.Filter.And(
         //            Builders<Employee>.Filter.Regex("FullName", new BsonRegularExpression(EmpName, "i")),
         //            Builders<Employee>.Filter.Regex("Department", new BsonRegularExpression(DepName, "i")));
-            
+
         //        return _employees.Find(filter).ToList();
         //}
         //public List<ResultEmployeeTask> SearchByTask(string TaskName, bool completed)
@@ -147,7 +147,7 @@ namespace DeviceManagementSystem.Services
         //            }
         //        }
         //    }
-        
+
         //    return _Tasks;
         //}
     }

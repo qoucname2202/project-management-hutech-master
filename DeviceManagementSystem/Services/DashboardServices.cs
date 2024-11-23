@@ -16,7 +16,7 @@ namespace DeviceManagementSystem.Services
         public DashboardServices(IConfiguration config)
         {
             MongoClient client = new MongoClient(config.GetConnectionString("DbConnection"));
-            IMongoDatabase database = client.GetDatabase("db_taskmanagement");
+            IMongoDatabase database = client.GetDatabase("db_hutech");
             _chart = database.GetCollection<BsonDocument>("employee");
         }
 

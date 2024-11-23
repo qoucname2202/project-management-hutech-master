@@ -16,28 +16,37 @@ namespace DeviceManagementSystem.Models
 
         [BsonElement("FullName")]
         [Required]
+        [MaxLength(100)]
         public string FullName { get; set; } = string.Empty;
 
         [BsonRepresentation(BsonType.ObjectId)]
+        [BsonElement("DepartmentID")]
         [Required]
         public string DepartmentID { get; set; } = string.Empty;
 
-        [BsonElement("EmployeeID")]
-        [Required]
-        public string EmployeeID { get; set; } = string.Empty;
-
         [BsonElement("Email")]
         [Required]
+        [EmailAddress]
         public string Email { get; set; } = string.Empty;
+
+        [BsonElement("Phone")]
+        [Required]
+        public string Phone { get; set; } = string.Empty;
 
         [BsonElement("Birthday")]
         [DataType(DataType.Date)]
-        public DateTime Birthday { get; set; } = DateTime.Now.Date;
-
-        [BsonElement("Phone")]
-        public string Phone { get; set; } = string.Empty;
+        public DateTime? Birthday { get; set; } = DateTime.Now.Date;
 
         [BsonElement("Position")]
+        [Required]
+        [MaxLength(50)]
         public string Position { get; set; } = string.Empty;
+
+        [BsonElement("Avatar")]
+        [Url]
+        public string? Avatar { get; set; }
+
+        [BsonElement("BorrowedDevices")]
+        public List<BorrowedDevice> BorrowedDevices { get; set; } = new List<BorrowedDevice>();
     }
 }

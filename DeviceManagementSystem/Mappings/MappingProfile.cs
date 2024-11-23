@@ -7,10 +7,10 @@ namespace DeviceManagementSystem.Mappings
     {
         public MappingProfile()
         {
-            CreateMap<Department, DepartmentViewModel>();
-            CreateMap<DepartmentViewModel, Department>();
-            CreateMap<EmployeeViewModel, Employee>();
-            CreateMap<Employee, EmployeeViewModel>();
+            //CreateMap<Department, DepartmentViewModel>();
+            //CreateMap<DepartmentViewModel, Department>();
+            //CreateMap<EmployeeViewModel, Employee>();
+            //CreateMap<Employee, EmployeeViewModel>();
         }
     }
 }

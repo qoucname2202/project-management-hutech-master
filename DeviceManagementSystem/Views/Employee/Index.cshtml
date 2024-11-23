@@ -1,5 +1,4 @@
-﻿@model List<DeviceManagementSystem.Models.EmployeeViewModel>
-@using System.Collections.Generic;
+﻿@using System.Collections.Generic;
 
 @{
     ViewData["Title"] = "Index";
@@ -8,11 +7,12 @@
 <div class="container-xxl flex-grow-1 container-p-y">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb breadcrumb-style1">
-            <li class="breadcrumb-item">
-                <a href="javascript:void(0);">Dashboard</a>
+            <li class="breadcrumb-item d-flex justify-content-center">
+                <i class="bx bx-home"></i>
+                <a asp-action="Index" asp-controller="Dashboard">Dashboard</a>
             </li>
             <li class="breadcrumb-item">
-                <a href="javascript:void(0);">User</a>
+                <a asp-action="Index" asp-controller="Employee">User</a>
             </li>
         </ol>
     </nav>

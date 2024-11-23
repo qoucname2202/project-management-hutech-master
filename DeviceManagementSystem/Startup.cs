@@ -25,7 +25,7 @@ namespace DeviceManagementSystem
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<EmployeeServices>();
-            services.AddScoped<DepartmentServices>();
+            services.AddScoped<DepartmentService>();
             services.AddScoped<CommonServices>();
             services.AddScoped<DashboardServices>();
 

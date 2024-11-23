@@ -1,72 +1,73 @@
-﻿@model DeviceManagementSystem.Models.DepartmentViewModel
-@using System.Collections.Generic;
+﻿@model DeviceManagementSystem.Models.Department
 
 @{
-    ViewData["Title"] = "Detail";
+    ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
-<div class="page-breadcrumb">
-    <div class="row align-items-center">
-        <div class="col-md-6 col-8 align-self-center">
-            <h3 class="page-title mb-0 p-0">Department</h3>
-            <div class="d-flex align-items-center">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item" aria-current="page">Department</li>
-                        <li class="breadcrumb-item active" aria-current="page">Detail</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid">
+<div class="container-xxl flex-grow-1 container-p-y">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-style1">
+            <li class="breadcrumb-item d-flex justify-content-center">
+                <i class="bx bx-home"></i>
+                <a asp-action="Index" asp-controller="Dashboard">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a asp-action="Index" asp-controller="Department">Department</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a asp-action="Create" asp-controller="Department">Create</a>
+            </li>
+        </ol>
+    </nav>
     <div class="row">
-        <div class="col-sm-12">
-            <div class="card">
+        <div class="col-xl">
+            <div class="card mb-4">
                 <div class="card-body">
-                    <form method="post" asp-action="InsertOrUpdate" class="form-horizontal form-material mx-2">
-                        <input type="hidden" name="Id" value="@Model.Id" />
-                        <div class="form-group">
-                            <label class="col-md-12 mb-0">Department Name</label>
-                            <div class="col-md-12">
-                                <input name="DepartmentName" type="text" value="@Model.DepartmentName"
-                                       class="form-control ps-0 form-control-line">
+                    <form class="" asp-action="Create" method="post">
+                        <div class="row">
+                            <div class="col-2">
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-12 mb-0">Manager Name</label>
-                            <div class="col-sm-12 border-bottom">
-                                <select name="EmployeeID" class="form-select shadow-none ps-0 border-0 form-control-line">
-                                    @foreach (var employee in ViewBag.Employees)
-                                    {
-                                        @if(employee.Id == Model.EmployeeID)
-                                        {
-                                            <option value="@employee.Id" selected>@employee.FullName (@employee.EmployeeID)</option>
-                                        }else{
-                                            <option value="@employee.Id">@employee.FullName (@employee.EmployeeID)</option>
-                                        }
-                                    }
-                                </select>
+                            <div class="col-8">
+                                <div class="row mb-3 mt-3 form-group">
+                                    <label class="col-sm-3 col-form-label text-end" for="basic-icon-default-name">Department Name:</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group input-group-merge">
+                                            <span id="basic-icon-default-name" class="input-group-text">
+                                                <i class="bx bx-buildings"></i>
+                                            </span>
+                                            <input type="text"
+                                                   id="name"
+                                                   class="form-control"
+                                                   asp-for="name"
+                                                   aria-describedby="basic-addon11" />
+                                        </div>
+                                        <span asp-validation-for="name" class="text-danger d-inline-block" style="margin-top: 5px"></span>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 form-group">
+                                    <label class="col-sm-3 col-form-label text-end" for="basic-icon-default-location">Location:</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group input-group-merge">
+                                            <span id="basic-icon-default-location" class="input-group-text">
+                                                <i class="bx bx-location-plus"></i>
+                                            </span>
+                                            <input type="text"
+                                                   id="location"
+                                                   class="form-control"
+                                                   asp-for="location"
+                                                   aria-describedby="basic-addon11" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3"></div>
+                                    <div class="col-9">
+                                        <button type="submit" id="btnCreate" class="btn btn-primary">Create</button>
+                                        <a asp-action="Index" class="btn btn-secondary">Back Home</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-12 mb-0">Description</label>
-                            <div class="col-md-12">
-                                <textarea name="Description" rows="5" class="form-control ps-0 form-control-line">@Model.Description</textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-12 d-flex">
-                                <button class="btn btn-success text-white" style="margin-right:10px">
-                                    Create
-                                </button>
-                                <a asp-action="Index" class="btn btn-danger text-white">
-                                    Cancel
-                                </a>
+                            <div class="col-2">
                             </div>
                         </div>
                     </form>
@@ -75,3 +76,7 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

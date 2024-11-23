@@ -1,98 +1,120 @@
-﻿using AutoMapper;
-using DeviceManagementSystem.Models;
-using DeviceManagementSystem.Services;
+﻿using DeviceManagementSystem.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
+using System;
+using DeviceManagementSystem.Services;
 
 namespace DeviceManagementSystem.Controllers
 {
     public class DepartmentController : Controller
     {
-        private readonly ILogger<DepartmentController> _logger;
-        private readonly DepartmentServices _departmentServices;
-        private readonly EmployeeServices _employeeServices;
-        private readonly IMapper _mapper;
-        public DepartmentController(ILogger<DepartmentController> logger, 
-            DepartmentServices departmentServices,
-            EmployeeServices employeeService,
-            IMapper mapper)
+        private readonly DepartmentService _departmentService;
+
+        public DepartmentController(DepartmentService departmentService)
         {
-            _logger = logger;
-            _departmentServices = departmentServices;
-            _employeeServices = employeeService;
-            _mapper = mapper;
+            _departmentService = departmentService;
         }
 
-        public IActionResult Index()
+        // GET: /Department
+        public async Task<IActionResult> Index()
         {
-            List<DepartmentViewModel> departments = _mapper.Map<List<Department>, List<DepartmentViewModel>>(_departmentServices.Get());
-            departments.Select(x => { 
-                x.EmployeeName = _employeeServices.Get(x.EmployeeID)?.FullName;
-                return x;
-            }).ToList();
-
+            var departments = await _departmentService.GetAllAsync();
             return View(departments);
         }
 
-        public IActionResult Edit(string id)
+        // GET: /Department/Details/{id}
+        public async Task<IActionResult> Details(string id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var model = _mapper.Map<Department, DepartmentViewModel>(_departmentServices.Get(id));
-            model.EmployeeName = _employeeServices.Get(model.EmployeeID)?.FullName;
-            if (model == null)
+            var department = await _departmentService.GetByIdAsync(id);
+            if (department == null)
             {
                 return NotFound();
             }
 
-            ViewBag.Employees = _employeeServices.Get();
+            // Convert UTC time to local time
+            var timeZone = TimeZoneInfo.FindSystemTimeZoneById("Asia/Ho_Chi_Minh");
+            department.created_at = TimeZoneInfo.ConvertTimeFromUtc(department.created_at, timeZone);
+            department.updated_at = TimeZoneInfo.ConvertTimeFromUtc(department.updated_at, timeZone);
 
-            return View(model);
+            return View(department);
         }
 
+        // GET: /Department/Create
         public IActionResult Create()
         {
-            var model = new DepartmentViewModel();
-            ViewBag.Employees = _employeeServices.Get();
-
-            return View(model);
+            return View();
         }
 
-        public IActionResult Delete(string id)
+        // POST: /Department/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Department department)
+        {
+            if (!ModelState.IsValid) return View(department);
+
+            try
+            {
+                await _departmentService.CreateAsync(department);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = $"Error creating department: {ex.Message}";
+                return View("Error");
+            }
+        }
+
+        // GET: /Department/Edit/{id}
+        public async Task<IActionResult> Edit(string id)
+        {
+            var department = await _departmentService.GetByIdAsync(id);
+            if (department == null) return NotFound();
+            return View(department);
+        }
+
+        // POST: /Department/Edit/{id}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(string id, Department department)
+        {
+            if (!ModelState.IsValid) return View(department);
+
+            try
+            {
+                var existingDepartment = await _departmentService.GetByIdAsync(id);
+                if (existingDepartment == null)
+                    return NotFound();
+
+                existingDepartment.name = department.name;
+                existingDepartment.location = department.location;
+                existingDepartment.updated_at = DateTime.UtcNow;
+
+                await _departmentService.UpdateAsync(id, existingDepartment);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = $"Error updating department: {ex.Message}";
+                return View("Error");
+            }
+        }
+
+        // POST: /Department/Delete/{id}
+        [HttpPost]
+        public async Task<IActionResult> Delete(string id)
         {
             try
             {
-                var model = _departmentServices.Get(id);
-
-                if (model == null)
-                {
-                    return NotFound();
-                }
-                _departmentServices.Remove(model.Id);
-
-                return RedirectToAction(nameof(Index));
+                var existingDepartment = await _departmentService.GetByIdAsync(id);
+                if (existingDepartment == null)
+                    return Json(new { success = false, message = "Department not found." });
+                await _departmentService.DeleteAsync(id);
+                return Json(new { success = true, message = "Department deleted successfully." });
             }
-            catch
+            catch (Exception ex)
             {
-                return RedirectToAction(nameof(Index));
+                return Json(new { success = false, message = $"Error: {ex.Message}" });
             }
-
-        }
-
-
-        [HttpPost]
-        public IActionResult InsertOrUpdate(Department model)
-        {
-            if (string.IsNullOrWhiteSpace(model.Id))
-                _departmentServices.Create(model);
-            else
-                _departmentServices.Update(model);
-
-            return RedirectToAction(nameof(Index));
         }
     }
 }
