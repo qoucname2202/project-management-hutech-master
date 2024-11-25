@@ -10,11 +10,12 @@ namespace DeviceManagementSystem.Models
         public string email { get; set; } = string.Empty;
 
         [BsonElement("hotline_first")]
-        [Phone]
         public string hotline_first { get; set; } = string.Empty;
 
         [BsonElement("hotline_second")]
-        [Phone]
         public string hotline_second { get; set; } = string.Empty;
+
+        [BsonElement("fax")]
+        public string fax { get; set; } = string.Empty;
     }
 }

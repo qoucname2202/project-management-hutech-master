@@ -1,60 +1,76 @@
-# 🌐 **Project Management System**
+# 📱 **Device Management System**
 
-Welcome to the **Project Management System** for **HUTECH (Ho Chi Minh City University of Technology)**! This platform is specifically designed to support Master's level Database Systems projects, providing students and educators with an effective tool for managing and exploring complex database projects.
+Welcome to the **Device Management System**, an intuitive platform designed to streamline the process of lending, tracking, and managing devices across your organization. Whether for students, employees, or departmental needs, this system ensures effective oversight of valuable equipment while simplifying device borrow operations.
 
 ---
 
 ## 📜 Table of Contents
 
-1. [Project Overview](#-project-overview)
-2. [Features](#-features)
-3. [Project Structure](#-project-structure)
-4. [Prerequisites](#-prerequisites)
+1. [Overview](#-overview)
+2. [Key Features](#-key-features)
+3. [System Architecture](#-system-architecture)
+4. [Getting Started](#-getting-started)
 5. [Installation Guide](#-installation-guide)
-6. [Connecting to the MongoDB Database](#-connecting-to-the-mongodb-database)
-7. [Usage](#-usage)
-8. [Troubleshooting](#-troubleshooting)
-9. [Contributing](#-contributing)
-10. [License](#-license)
+6. [Managing Device](#-managing-device)
+7. [Troubleshooting](#-troubleshooting)
+8. [Contributing](#-contributing)
+9. [License](#-license)
 
 ---
 
-## 📘 Project Overview
+## 📘 Overview
 
-This **ASP.NET Core** and **MongoDB**-powered web application serves as a learning and management tool for students and professors at HUTECH, making database system education more accessible and interactive.
+The **Device Borrow Management System** is built with **ASP.NET Core** and **MongoDB** to provide a powerful yet easy-to-use interface for lending and tracking devices. This system is ideal for institutions, corporate environments, and schools where multiple devices need to be issued and tracked effectively.
 
 ### 🎯 Goal
 
-Our mission is to create a **functional, scalable, and user-friendly** platform that helps users master database management concepts while providing a seamless management experience.
+Our mission is to provide a **comprehensive, user-friendly, and highly scalable** platform that facilitates seamless device lending, minimizes loss, and reduces the administrative burden on the organization.
 
 ---
 
-## 🚀 Features
+## 🚀 Key Features
 
-- **🔒 User Authentication**: Secure login for students and faculty.
-- **📚 Course Management**: Access and organize course materials and assignments.
-- **💻 Database Exercises**: Interactive labs for hands-on database experience.
-- **🛠️ Admin Interface**: Control panel for managing users, projects, and settings.
-- **📊 Data Visualization**: Visual tools for understanding queries and data.
+- **🔒 Secure User Authentication**: Role-based access for administrators, users, and staff.
+- **📋 Device Inventory Management**: Track device details, availability, and borrow status.
+- **⏰ Borrow Scheduling**: Set borrow periods, return reminders, and extend borrow durations.
+- **📊 Data Visualization**: Dashboards for monitoring borrow activities, device health, and usage statistics.
+- **🛠️ Admin Control Panel**: Manage users, configure device categories, and customize system settings.
 
 ---
 
-## 📂 Project Structure
+## 🏗️ System Architecture
 
 ```plaintext
-Project-Management-Hutech-Master/
+Device-Borrow-Management/
 ├── Controllers/
-│   └── TaskController.cs
-│   └── ProjectController.cs
+│   └── DeviceController.cs
+│   └── SpecificationsController.cs
+│   └── ModelController.cs
+│   └── DepartmentController.cs
+│   └── DeviceTypeController.cs
 │   └── EmployeeController.cs
 ├── Models/
-│   └── Task.cs
-│   └── Project.cs
+│   └── BorrowedDevice.cs
+│   └── BorrowHistory.cs
+│   └── ChartViewModel.cs
+│   └── Department.cs
+│   └── Device.cs
+│   └── DeviceLocation.cs
+│   └── DeviceType.cs
 │   └── Employee.cs
+│   └── ErrorViewModel.cs
+│   └── MaintenanceLog.cs
+│   └── Manufacturer.cs
+│   └── ManufacturerContactInfo.cs
+│   └── Model.cs
+│   └── Specifications.cs
 ├── Views/
-│   └── Home/
-│   └── Task/
-│   └── Project/
+│   └── BorrowHistory/
+│   └── Device/
+│   └── Model/
+│   └── Specifications/
+│   └── Manufacturer/
+│   └── DeviceType/
 │   └── Employee/
 ├── Services/
 │   └── MongoDBService.cs
@@ -63,23 +79,23 @@ Project-Management-Hutech-Master/
 │   └── js/
 ├── appsettings.json
 ├── Program.cs
-├── Startup.cs
+├── startup.cs
 └── README.md
 ```
 
-- **Controllers/**: Manages API requests and logic.
-- **Models/**: Contains MongoDB collection schemas.
-- **Views/**: Razor views for the frontend.
-- **Services/**: MongoDB service layer.
-- **wwwroot/**: Static assets like CSS and JavaScript.
-- **appsettings.json**: Stores configuration for database and other settings.
+- **Controllers/**: Handles API requests and business logic.
+- **Models/**: Represents MongoDB collection schemas, including details about borrowed devices, borrow history, device specifications, and more.
+- **Views/**: Razor views for UI components.
+- **Services/**: Handles interactions with MongoDB.
+- **wwwroot/**: Static assets for frontend.
+- **appsettings.json**: Stores database connection configurations.
 - **Program.cs** and **Startup.cs**: Configure and initialize the ASP.NET Core app.
 
 ---
 
-## 🛠️ Prerequisites
+## 🛠️ Getting Started
 
-Ensure you have these installed before starting:
+To begin using the system, ensure the following prerequisites are installed:
 
 - **ASP.NET Core SDK** (5.0+)
 - **MongoDB** (4.0+)
@@ -93,8 +109,8 @@ Ensure you have these installed before starting:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/username/Project-Management.git
-cd Project-Management
+git clone https://github.com/qoucname2202/project-management-hutech-master.git
+cd Device-Borrow-Management
 ```
 
 ### 2. Set Up MongoDB
@@ -108,9 +124,9 @@ Update `appsettings.json` with your MongoDB connection details:
 ```json
 {
 	"ConnectionStrings": {
-		"MongoDB": "mongodb://localhost:27017/ProjectManagementDB"
+		"MongoDB": "mongodb://localhost:27017/db_hutech"
 	},
-	"DatabaseName": "ProjectManagementDB"
+	"DatabaseName": "db_hutech"
 }
 ```
 
@@ -130,26 +146,18 @@ dotnet run
 
 ---
 
-## 📡 Connecting to the MongoDB Database
+## 📡 Managing Device
 
-1. **Run MongoDB** on your local or remote server.
-2. Confirm the connection string in `appsettings.json`.
-3. Use [MongoDB Compass](https://www.mongodb.com/products/compass) for a visual interface to interact with your MongoDB data.
-
----
-
-## 🔧 Usage
-
-1. **Launch the App**: Open your browser and navigate to `http://localhost:5000`.
-2. **Student & Professor Access**: Log in to access course features.
-3. **Admin Dashboard**: Log in with an admin account to manage users, projects, and system settings.
-4. **Database Labs**: Perform exercises and view real-time MongoDB queries.
+1. **Launch the Application**: Open your browser and go to `http://localhost:5000`.
+2. **Log In**: Access the system with user credentials to view or manage devices.
+3. **Borrow Management**: Check out, renew, or return devices using the intuitive borrow interface.
+4. **Admin Features**: Administrators can add new devices, track current, and manage user permissions.
 
 ---
 
 ## 🐞 Troubleshooting
 
-- **Connection Errors**: Ensure MongoDB is running and verify your `appsettings.json` connection string.
+- **Connection Errors**: Ensure MongoDB is running and verify the connection string in `appsettings.json`.
 - **Dependency Issues**: Run `dotnet restore` to reinstall packages.
 
 ---
@@ -163,12 +171,11 @@ dotnet run
 
 <table align="center">
   <tbody>
-	<tr>
-			<td align="center"><a href="https://github.com/tuyennt12"><img src="https://avatars.githubusercontent.com/tuyennt12" width="100px;" alt="Nguyễn Trung Tuyến"/><br/><sub><b>Trung Tuyến</b></sub></a><br/><a href="https://github.com/tuyennt12" title="Document">📝</a><a  href="https://github.com/tuyennt12" title="Code">💻</a></td>
-		<td align="center"><a href="https://github.com/qoucname2202"><img src="https://avatars.githubusercontent.com/qoucname2202" width="100px;" alt="Dương Quốc Nam"/><br/><sub><b>Quốc Nam</b></sub></a><br/><a href="https://github.com/qoucname2202" title="Document">📝</a><a href="https://github.com/qoucname2202" title="Code">💻</a></td>
+    <tr>
+      <td align="center"><a href="https://github.com/tuyennt12"><img src="https://avatars.githubusercontent.com/tuyennt12" width="100px;" alt="Nguyễn Trung Tuyến"/><br/><sub><b>Trung Tuyến</b></sub></a><br/><a href="https://github.com/tuyennt12" title="Document">📝</a><a href="https://github.com/tuyennt12" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/qoucname2202"><img src="https://avatars.githubusercontent.com/qoucname2202" width="100px;" alt="Dương Quốc Nam"/><br/><sub><b>Quốc Nam</b></sub></a><br/><a href="https://github.com/qoucname2202" title="Document">📝</a><a href="https://github.com/qoucname2202" title="Code">💻</a></td>
     </tr>
-    </tbody>
-
+  </tbody>
 </table>
 
 ---

@@ -17,8 +17,20 @@ namespace DeviceManagementSystem.Models
         public string name { get; set; } = string.Empty;
 
         [BsonElement("country")]
-        [MaxLength(50)]
+        [MaxLength(20)]
         public string country { get; set; } = string.Empty;
+
+        [BsonElement("address")]
+        [MaxLength(100)]
+        public string address { get; set; } = string.Empty;
+
+        [BsonElement("post_code")]
+        [MaxLength(6)]
+        public int post_code { get; set; }
+
+        [BsonElement("city")]
+        [MaxLength(30)]
+        public string city { get; set; } = string.Empty;
 
         [BsonElement("contact_info")]
         public ManufacturerContactInfo contact_info { get; set; } = new ManufacturerContactInfo();
