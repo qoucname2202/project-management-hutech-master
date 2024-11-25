@@ -8,9 +8,9 @@ namespace DeviceManagementSystem.Controllers
 {
     public class DepartmentController : Controller
     {
-        private readonly DepartmentService _departmentService;
+        private readonly DepartmentServices _departmentService;
 
-        public DepartmentController(DepartmentService departmentService)
+        public DepartmentController(DepartmentServices departmentService)
         {
             _departmentService = departmentService;
         }

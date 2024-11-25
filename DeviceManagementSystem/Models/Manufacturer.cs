@@ -9,25 +9,31 @@ namespace DeviceManagementSystem.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public string id { get; set; }
 
-        [BsonElement("Name")]
+        [BsonElement("name")]
         [Required]
         [MaxLength(100)]
-        public string Name { get; set; } = string.Empty;
+        public string name { get; set; } = string.Empty;
 
-        [BsonElement("Country")]
+        [BsonElement("country")]
         [MaxLength(50)]
-        public string Country { get; set; } = string.Empty;
+        public string country { get; set; } = string.Empty;
 
-        [BsonElement("ContactInfo")]
-        public ManufacturerContactInfo ContactInfo { get; set; } = new ManufacturerContactInfo();
+        [BsonElement("contact_info")]
+        public ManufacturerContactInfo contact_info { get; set; } = new ManufacturerContactInfo();
 
-        [BsonElement("WarrantyTerms")]
+        [BsonElement("warranty_terms")]
         [MaxLength(500)]
-        public string WarrantyTerms { get; set; } = string.Empty;
+        public string warranty_terms { get; set; } = string.Empty;
 
-        [BsonElement("CreatedAt")]
-        public DateTime CreatedAt { get; set; }
+        [BsonElement("created_at")]
+        public DateTime created_at { get; set; } = DateTime.UtcNow;
+
+        [BsonElement("updated_at")]
+        public DateTime updated_at { get; set; } = DateTime.UtcNow;
+
+        [BsonElement("is_removed")]
+        public bool is_removed { get; set; } = false;
     }
 }

@@ -9,18 +9,24 @@ namespace DeviceManagementSystem.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; } = string.Empty;
+        public string id { get; set; }
 
-        [BsonElement("Name")]
-        [Required]
-        [MaxLength(50)]
-        public string Name { get; set; } = string.Empty;
+        [BsonElement("name")]
+        [Required(ErrorMessage = "The device type name field is required.")]
+        [MaxLength(50, ErrorMessage = "The device type name cannot exceed 50 characters.")]
+        public string name { get; set; } = string.Empty;
 
-        [BsonElement("Description")]
-        [MaxLength(500)]
-        public string Description { get; set; } = string.Empty;
+        [BsonElement("description")]
+        [MaxLength(500, ErrorMessage = "The device type name cannot exceed 500 characters.")]
+        public string description { get; set; } = string.Empty;
 
-        [BsonElement("CreatedAt")]
-        public DateTime CreatedAt { get; set; }
+        [BsonElement("created_at")]
+        public DateTime created_at { get; set; } = DateTime.UtcNow;
+
+        [BsonElement("updated_at")]
+        public DateTime updated_at { get; set; } = DateTime.UtcNow;
+
+        [BsonElement("is_removed")]
+        public bool is_removed { get; set; } = false;
     }
 }

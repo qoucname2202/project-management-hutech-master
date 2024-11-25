@@ -1,0 +1,128 @@
+﻿@model DeviceManagementSystem.Models.DeviceType
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="container-xxl flex-grow-1 container-p-y">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-style1">
+            <li class="breadcrumb-item d-flex justify-content-center">
+                <i class="bx bx-home"></i>
+                <a asp-action="Index" asp-controller="Dashboard">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a asp-action="Index" asp-controller="DeviceType">Device Type</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a asp-action="Details" asp-controller="DeviceType">Details</a>
+            </li>
+        </ol>
+    </nav>
+    <div class="row">
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <form class="">
+                        <div class="row">
+                            <div class="col-2">
+                            </div>
+                            <div class="col-8">
+                                <div class="row mb-3 mt-3 form-group">
+                                    <label class="col-sm-3 col-form-label text-end" for="basic-icon-default-name">DeviceType ID:</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group input-group-merge">
+                                            <span id="basic-icon-default-name" class="input-group-text" style="background-color: #eceef1;">
+                                                <i class="bx bx-key"></i>
+                                            </span>
+                                            <input type="text"
+                                                   id="DeviceType_id"
+                                                   disabled
+                                                   class="form-control"
+                                                   asp-for="name"
+                                                   value="@Model.id"
+                                                   aria-describedby="basic-addon11" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 form-group">
+                                    <label class="col-sm-3 col-form-label text-end" for="basic-icon-default-name">Device Type Name:</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group input-group-merge">
+                                            <span id="basic-icon-default-name" class="input-group-text">
+                                                <i class="bx bx-buildings"></i>
+                                            </span>
+                                            <input type="text"
+                                                   id="name"
+                                                   class="form-control"
+                                                   asp-for="name"
+                                                   value="@Model.name"
+                                                   aria-describedby="basic-addon11" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 form-group">
+                                    <label class="col-sm-3 col-form-label text-end" for="basic-icon-default-description">Description:</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group input-group-merge">
+                                            <span id="basic-icon-default-message2" class="input-group-text">
+                                                <i class="bx bx-comment"></i>
+                                            </span>
+                                            <textarea class="form-control"
+                                                      id="description"
+                                                      type="text"
+                                                      asp-for="description"
+                                                      value="@Model.description"
+                                                      aria-describedby="basic-icon-default-message2"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 form-group">
+                                    <label class="col-sm-3 col-form-label text-end" for="basic-icon-default-createdAt">Created at:</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group input-group-merge">
+                                            <span id="basic-icon-default-createdAt" class="input-group-text">
+                                                <i class="bx bx-calendar"></i>
+                                            </span>
+                                            <input type="text"
+                                                   id="createdAt"
+                                                   class="form-control"
+                                                   asp-for="created_at"
+                                                   value="@Model.created_at.ToString("dd-MM-yyyy hh:mm:ss tt")"
+                                                   aria-describedby="basic-addon11" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 form-group">
+                                    <label class="col-sm-3 col-form-label text-end" for="basic-icon-default-updatedAt">Updated at:</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group input-group-merge">
+                                            <span id="basic-icon-default-updatedAt" class="input-group-text">
+                                                <i class="bx bx-calendar"></i>
+                                            </span>
+                                            <input type="text"
+                                                   id="updatedAt"
+                                                   class="form-control"
+                                                   asp-for="updated_at"
+                                                   value="@Model.updated_at.ToString("dd-MM-yyyy hh:mm:ss tt")"
+                                                   aria-describedby="basic-addon11" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-8">
+                            <button type="button" onclick="location.href='@Url.Action("Index", "DeviceType")'" class="btn rounded-pill btn-secondary">
+                                <span class="tf-icons bx bx-home"></span>&nbsp; Back Home
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

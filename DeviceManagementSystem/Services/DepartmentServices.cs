@@ -7,11 +7,11 @@ using Microsoft.Extensions.Configuration;
 
 namespace DeviceManagementSystem.Services
 {
-    public class DepartmentService
+    public class DepartmentServices
     {
         private readonly IMongoCollection<Department> _departments;
 
-        public DepartmentService(IConfiguration config)
+        public DepartmentServices(IConfiguration config)
         {
             MongoClient client = new MongoClient(config.GetConnectionString("DbConnection"));
             IMongoDatabase database = client.GetDatabase("db_hutech");
