@@ -1,0 +1,32 @@
+﻿@model DeviceManagementSystem.Models.Manufacturer
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Manufacturer Details</h2>
+<div>
+    <strong>Name:</strong> @Model.name
+</div>
+<div>
+    <strong>Country:</strong> @Model.country
+</div>
+<div>
+    <strong>City:</strong> @Model.city
+</div>
+
+<h3>Contact Information</h3>
+<div>
+    <strong>Email:</strong> @Model.contact_info.email
+</div>
+<div>
+    <strong>Hotline (Primary):</strong> @Model.contact_info.hotline_first
+</div>
+<div>
+    <strong>Hotline (Secondary):</strong> @Model.contact_info.hotline_second
+</div>
+<div>
+    <strong>Fax:</strong> @Model.contact_info.fax
+</div>
+
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>

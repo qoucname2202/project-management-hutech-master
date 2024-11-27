@@ -26,7 +26,7 @@ namespace DeviceManagementSystem.Models
 
         [BsonElement("post_code")]
         [MaxLength(6)]
-        public int post_code { get; set; }
+        public string post_code { get; set; } = string.Empty;
 
         [BsonElement("city")]
         [MaxLength(30)]

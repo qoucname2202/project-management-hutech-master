@@ -27,6 +27,7 @@ namespace DeviceManagementSystem
             services.AddScoped<EmployeeServices>();
             services.AddScoped<DepartmentServices>();
             services.AddScoped<DeviceTypeServices>();
+            services.AddScoped<ManufacturerService>();
             services.AddScoped<CommonServices>();
             services.AddScoped<DashboardServices>();
 
