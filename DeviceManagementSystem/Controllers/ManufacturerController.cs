@@ -9,7 +9,7 @@ using System.Threading.Tasks;
  * Description: Controller for managing manufacturer entities in the system.
  * Author: Duong Quoc Nam
  * Date Created: 2024-11-26
- * Last Modified By: 2024-11-27
+ * Last Modified By: 2024-12-05
  * ************************************************************************/
 namespace DeviceManagementSystem.Controllers
 {
@@ -28,12 +28,17 @@ namespace DeviceManagementSystem.Controllers
         /// <returns>
         /// A ViewResult that renders the Index view, populated with the list of manufacturers retrieved from the database.
         /// </returns>
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 2)
         {
-            // Retrieve the list of all non-soft-deleted manufacturers from the service layer.
-            var manufacturers = await _manufacturerService.GetAllAsync();
-            return View(manufacturers);
+            var paginatedResult = await _manufacturerService.GetAllAsync(pageNumber, pageSize);
+
+            ViewData["TotalPages"] = paginatedResult.TotalPages;
+            ViewData["CurrentPage"] = pageNumber;
+            ViewData["TotalRecords"] = paginatedResult.TotalRecords;
+
+            return View(paginatedResult.Data);
         }
+
 
         /// <summary>
         /// Handles the request to display the details of a specific manufacturer.
@@ -155,10 +160,10 @@ namespace DeviceManagementSystem.Controllers
                 // Check if the manufacturer exists.
                 if (existingDepartment == null)
                 {
-                    return Json(new { success = false, message = "Manufacturer not found." });
+                    return Json(new { success = false, message = "Manufacturer not found" });
                 }
                 await _manufacturerService.DeleteAsync(id);
-                return Json(new { success = true, message = "Manufacturer deleted successfully." });
+                return Json(new { success = true, message = "Manufacturer deleted successfully" });
             }
             catch (Exception ex)
             {

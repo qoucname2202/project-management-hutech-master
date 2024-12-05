@@ -4,41 +4,201 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<div class="container-xxl flex-grow-1 container-p-y">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-style1">
+            <li class="breadcrumb-item d-flex justify-content-center">
+                <i class="bx bx-home"></i>
+                <a asp-action="Index" asp-controller="Dashboard">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a asp-action="Index" asp-controller="Department">Department</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a asp-action="Create" asp-controller="Department">Create</a>
+            </li>
+        </ol>
+    </nav>
+    <div class="row">
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <form class="" asp-action="Create" method="post" autocomplete="off">
+                        <div class="row">
+                            <div class="col-2">
+                            </div>
+                            <div class="col-8 container">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="col-form-label" for="basic-icon-default-name">Name:</label>
+                                            <div class="input-group input-group-merge">
+                                                <span id="basic-icon-default-name" class="input-group-text">
+                                                    <i class="bx bx-user"></i>
+                                                </span>
+                                                <input type="text"
+                                                       id="name"
+                                                       class="form-control"
+                                                       asp-for="name"
+                                                       autocomplete="off" />
+                                            </div>
+                                            <span asp-validation-for="name" class="text-danger d-inline-block" style="margin-top: 5px"></span>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="col-form-label" for="basic-icon-default-name">Address:</label>
+                                            <div class="input-group input-group-merge">
+                                                <span id="basic-icon-default-name" class="input-group-text">
+                                                    <i class="bx bx-home"></i>
+                                                </span>
+                                                <input type="text"
+                                                       id="address"
+                                                       class="form-control"
+                                                       autocomplete="off"
+                                                       asp-for="address" />
+                                            </div>
+                                            <span asp-validation-for="address" class="text-danger d-inline-block" style="margin-top: 5px"></span>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="col-form-label text-end" for="basic-icon-default-hotline-1">Hotline:</label>
+                                            <div class="input-group input-group-merge">
+                                                <span id="basic-icon-default-hotline-1" class="input-group-text">
+                                                    <i class="bx bx-phone"></i>
+                                                </span>
+                                                <input type="text"
+                                                       id="contact-info-hotline-first"
+                                                       class="form-control"
+                                                       autocomplete="off"
+                                                       asp-for="contact_info.hotline_first" />
+                                            </div>
+                                            <span asp-validation-for="contact_info.hotline_first" class="text-danger d-inline-block" style="margin-top: 5px"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="col-form-label" for="basic-icon-default-country">Country:</label>
+                                            <div class="input-group input-group-merge">
+                                                <span id="basic-icon-default-country" class="input-group-text">
+                                                    <i class="bx bx-buildings"></i>
+                                                </span>
+                                                <input type="text"
+                                                       id="country"
+                                                       class="form-control"
+                                                       autocomplete="off"
+                                                       asp-for="country" />
+                                            </div>
+                                            <span asp-validation-for="country" class="text-danger d-inline-block" style="margin-top: 5px"></span>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="col-form-label" for="basic-icon-default-city">City:</label>
+                                            <div class="input-group input-group-merge">
+                                                <span id="basic-icon-default-city" class="input-group-text">
+                                                    <i class="bx bx-buildings"></i>
+                                                </span>
+                                                <input type="text"
+                                                       id="city"
+                                                       autocomplete="off"
+                                                       class="form-control"
+                                                       asp-for="city" />
+                                            </div>
+                                            <span asp-validation-for="city" class="text-danger d-inline-block" style="margin-top: 5px"></span>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="col-form-label" for="basic-icon-default-post-code">Post Code:</label>
+                                            <div class="input-group input-group-merge">
+                                                <span id="basic-icon-default-post-code" class="input-group-text">
+                                                    <i class="bx bx-barcode"></i>
+                                                </span>
+                                                <input type="text"
+                                                       id="post_code"
+                                                       autocomplete="off"
+                                                       class="form-control"
+                                                       asp-for="post_code" />
+                                            </div>
+                                            <span asp-validation-for="post_code" class="text-danger d-inline-block" style="margin-top: 5px"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-12">
+                                            <label class="col-form-label" for="basic-icon-default-description">Description:</label>
+                                            <div class="input-group input-group-merge">
+                                                <span id="basic-icon-default-message2" class="input-group-text">
+                                                    <i class="bx bx-comment"></i>
+                                                </span>
+                                                <textarea class="form-control"
+                                                          id="description"
+                                                          autocomplete="off"
+                                                          type="text"
+                                                          placeholder="Hi, Do you have a moment to talk Joe?"
+                                                          aria-label="Hi, Do you have a moment to talk Joe?"
+                                                          asp-for="warranty_terms"
+                                                          aria-describedby="basic-icon-default-message2"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="col-form-label text-end" for="basic-icon-default-email">Email:</label>
+                                            <div class="input-group input-group-merge">
+                                                <span id="basic-icon-default-email" class="input-group-text">
+                                                    <i class="bx bx-envelope"></i>
+                                                </span>
+                                                <input type="text"
+                                                       id="contact-info-email"
+                                                       class="form-control"
+                                                       autocomplete="off"
+                                                       asp-for="contact_info.email" />
+                                            </div>
+                                            <span asp-validation-for="contact_info.email" class="text-danger d-inline-block" style="margin-top: 5px"></span>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div>
+                                                <label class="col-form-label text-end" for="basic-icon-default-hotline-2">Hotline-2:</label>
+                                                <div class="input-group input-group-merge">
+                                                    <span id="basic-icon-default-hotline-2" class="input-group-text">
+                                                        <i class="bx bx-phone"></i>
+                                                    </span>
+                                                    <input type="text"
+                                                           id="contact-info-hotline-second"
+                                                           class="form-control"
+                                                           autocomplete="off"
+                                                           asp-for="contact_info.hotline_second" />
+                                                </div>
+                                                <span asp-validation-for="contact_info.hotline_second" class="text-danger d-inline-block" style="margin-top: 5px"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="col-form-label text-end" for="basic-icon-default-fax">Fax:</label>
+                                            <div class="input-group input-group-merge">
+                                                <span id="basic-icon-default-fax" class="input-group-text">
+                                                    <i class="bx bx-qr-scan"></i>
+                                                </span>
+                                                <input type="text"
+                                                       id="contact-info-fax"
+                                                       class="form-control"
+                                                       autocomplete="off"
+                                                       asp-for="contact_info.fax" />
+                                            </div>
+                                            <span asp-validation-for="contact_info.fax" class="text-danger d-inline-block" style="margin-top: 5px"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row form-group mt-4">
+                                    <div class="col-12 text-center">
+                                        <button type="submit" id="btnCreate" class="btn btn-primary">Create</button>
+                                        <a asp-action="Index" class="btn btn-secondary">Back Home</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<h2>Create Manufacturer</h2>
-<form asp-action="Create" method="post">
-    <div class="form-group">
-        <label asp-for="name"></label>
-        <input asp-for="name" class="form-control" />
-        <span asp-validation-for="name" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="country"></label>
-        <input asp-for="country" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="city"></label>
-        <input asp-for="city" class="form-control" />
-    </div>
-
-    <h3>Contact Information</h3>
-    <div class="form-group">
-        <label asp-for="contact_info.email"></label>
-        <input asp-for="contact_info.email" class="form-control" />
-        <span asp-validation-for="contact_info.email" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="contact_info.hotline_first"></label>
-        <input asp-for="contact_info.hotline_first" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="contact_info.hotline_second"></label>
-        <input asp-for="contact_info.hotline_second" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="contact_info.fax"></label>
-        <input asp-for="contact_info.fax" class="form-control" />
-    </div>
-
-    <button type="submit" class="btn btn-primary">Create</button>
-</form>
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

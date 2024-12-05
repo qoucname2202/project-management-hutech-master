@@ -10,7 +10,7 @@ using System;
  * Description: Service for managing manufacturer entities in the system.
  * Author: Duong Quoc Nam
  * Date Created: 2024-11-26
- * Last Modified By: 
+ * Last Modified By: 2024-12-05
  * ************************************************************************/
 namespace DeviceManagementSystem.Services
 {
@@ -38,23 +38,51 @@ namespace DeviceManagementSystem.Services
         }
 
         /// <summary>
-        /// [Retrieves manufacturer from the database, excluding deleted records.]
+        /// Retrieves a paginated list of manufacturers from the database, excluding soft-deleted records.
         /// </summary>
-        /// <returns>[The manufacturer list if found and not marked as removed; otherwise, list manufacturer empty.]</returns>
-        /// <exception cref="ArgumentNullException">[Condition for the exception]</exception>
-        public async Task<List<Manufacturer>> GetAllAsync()
+        /// <param name="pageNumber">The current page number (1-based index).</param>
+        /// <param name="pageSize">The number of records to fetch per page.</param>
+        /// <returns>A paginated list of manufacturers for the specified page.</returns>
+        public async Task<PaginatedResult<Manufacturer>> GetAllAsync(int pageNumber, int pageSize)
         {
             try
             {
-                return await _manufacturers.Find(item => !item.is_removed).ToListAsync();
+                // Ensure pageNumber and pageSize have valid values
+                pageNumber = pageNumber < 1 ? 1 : pageNumber;
+                pageSize = pageSize < 1 ? 10 : pageSize;
+
+                // Calculate the total number of manufacturers (excluding removed ones)
+                long totalRecords = await _manufacturers.CountDocumentsAsync(item => !item.is_removed);
+
+                // Fetch the manufacturers for the specific page using Skip and Limit
+                var manufacturers = await _manufacturers
+                    .Find(item => !item.is_removed) // Filter to exclude deleted records
+                    .Skip((pageNumber - 1) * pageSize) // Skip the records of previous pages
+                    .Limit(pageSize) // Limit to the specified page size
+                    .ToListAsync();
+
+                // Return the paginated result
+                return new PaginatedResult<Manufacturer>
+                {
+                    Data = manufacturers,
+                    TotalRecords = totalRecords,
+                    PageNumber = pageNumber,
+                    PageSize = pageSize
+                };
             }
             catch (Exception ex)
             {
-                // log message to the console if an exception occours during query
-                Console.WriteLine($"Error retrieving manufacturer: {ex.Message}");
-                return new List<Manufacturer>();
+                Console.WriteLine($"Error retrieving manufacturers: {ex.Message}");
+                return new PaginatedResult<Manufacturer>
+                {
+                    Data = new List<Manufacturer>(),
+                    TotalRecords = 0,
+                    PageNumber = pageNumber,
+                    PageSize = pageSize
+                };
             }
         }
+
 
         /// <summary>
         /// [Retrieves a single manufacturer by its ID from the database, excluding deleted records.]
